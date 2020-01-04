@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Navbar = ({ title, icon }) => {
   return (
-    <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
-      <h1 class='navbar-brand'>
+    <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+      <h1 className='navbar-brand'>
         <i className={icon} /> Contact Keeper
       </h1>
       <button
@@ -24,7 +24,7 @@ const Navbar = ({ title, icon }) => {
         <ul className='navbar-nav ml-auto'>
           <li className='nav-item'>
             <Link className='nav-link' to='/'>
-              Home <span class='sr-only'></span>
+              Home <span className='sr-only'></span>
             </Link>
           </li>
           <li className='nav-item'>
