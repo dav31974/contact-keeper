@@ -306,6 +306,23 @@ img {
 .round-img {
   border-radius: 50%;
 }
+/* Animation css transition group */
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 800ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+  left: 0px;
+}
+.item-exit-active {
+  opacity: 0;
+  left: 800px;
+  transition: all 800ms ease-in;
+}
 
 /* Forms */
 input {
