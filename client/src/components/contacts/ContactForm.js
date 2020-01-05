@@ -136,7 +136,7 @@ const ContactForm = () => {
       {current && (
         <div>
           <button className='btn btn-light btn-block' onClick={clearAll}>
-            Clear data
+            Cancel
           </button>
         </div>
       )}
