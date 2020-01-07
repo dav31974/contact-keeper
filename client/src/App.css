@@ -47,6 +47,15 @@ img {
   overflow: hidden;
   padding: 0 2rem;
 }
+.form-container {
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+}
+.form-group input {
+  margin-top: 0px !important;
+}
 
 /* Text Styles*/
 .x-large {
