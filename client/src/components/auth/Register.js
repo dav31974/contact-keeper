@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AlertContext from '../../context/alert/alertContext';
 
 const Register = () => {
+  const alertContext = useContext(AlertContext);
+
+  const { setAlert } = alertContext;
+
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -14,7 +19,18 @@ const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log('Register submit');
+
+    if (name === '') {
+      setAlert(' your name must be indicated', 'danger', 6000);
+    } else if (email === '') {
+      setAlert(' your email must be indicated', 'danger', 6000);
+    } else if (password === '') {
+      setAlert(' your password must be indicated', 'danger', 6000);
+    } else if (password2 === '') {
+      setAlert(' your password confirm must be indicated', 'danger', 6000);
+    } else if (password2 !== password) {
+      setAlert(' The password confirmation is not valid', 'danger', 6000);
+    } else console.log('registration submit');
   };
 
   return (
@@ -51,6 +67,7 @@ const Register = () => {
             placeholder='Choose a great password'
             value={password}
             onChange={onChange}
+            minLength='6'
           />
         </div>
         <div className='form-group'>
@@ -61,6 +78,7 @@ const Register = () => {
             placeholder='Confirm your password'
             value={password2}
             onChange={onChange}
+            minLength='6'
           />
         </div>
         <input
