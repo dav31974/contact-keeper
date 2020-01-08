@@ -1,8 +1,44 @@
-import React from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
 
 const Navbar = ({ title, icon }) => {
+  const authContext = useContext(AuthContext);
+
+  const { isAuthenticated, logout, user } = authContext;
+
+  const onLogout = () => {
+    logout();
+  };
+
+  const authLinks = (
+    <Fragment>
+      <li>Hello {user && user.name}</li>
+      <li>
+        <a onClick={onLogout} href='#!'>
+          <i className='fas fa-sign-out-alt'></i>
+          <span className='hide-sm'>Logout</span>
+        </a>
+      </li>
+    </Fragment>
+  );
+
+  const guestLinks = (
+    <Fragment>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/login'>
+          Login
+        </Link>
+      </li>
+      <li className='nav-item'>
+        <Link className='nav-link' to='/register'>
+          Register
+        </Link>
+      </li>
+    </Fragment>
+  );
+
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
       <h1 className='navbar-brand'>
@@ -22,26 +58,7 @@ const Navbar = ({ title, icon }) => {
 
       <div className='collapse navbar-collapse' id='navbarColor02'>
         <ul className='navbar-nav ml-auto'>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/'>
-              Home <span className='sr-only'></span>
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/about'>
-              About
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/login'>
-              Login
-            </Link>
-          </li>
-          <li className='nav-item'>
-            <Link className='nav-link' to='/register'>
-              Register
-            </Link>
-          </li>
+          {isAuthenticated ? authLinks : guestLinks}
         </ul>
       </div>
     </nav>
